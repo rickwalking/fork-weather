@@ -11,5 +11,11 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "paths": {
+    "@initial/*": ["src/app/modules/initial/*"],
+    "@weather/*": ["src/app/modules/weather/*"],
+    "@details/*": ["src/app/modules/details/*"],
+    "@shared/*": ["src/app/modules/shared/*"],
+  }
 }
