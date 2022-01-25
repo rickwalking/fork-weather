@@ -1,1 +1,18 @@
-<p>Welcome to Weather App!</p>
+<div class="initial-container">
+    <mat-card>
+        <mat-card-title>Bem vindo ao ForkWeather</mat-card-title>
+        <mat-card-subtitle>Diga seu nome ou entre como convidado</mat-card-subtitle>
+        <mat-card-content>
+            <form class="initial-container__intro-form" [formGroup]="getForm()">
+                <mat-form-field appearance="standard">
+                  <mat-label>Nome</mat-label>
+                  <input type="name" matInput placeholder="Diga seu nome" formControlName="name">
+                </mat-form-field>
+                <mat-checkbox formControlName="visitorMode" color="primary">Modo visitante</mat-checkbox>
+              </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button class="initial-container__submit-button" color="primary" [disabled]="!isFormValid()">Entrar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

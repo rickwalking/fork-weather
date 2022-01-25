@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { InitialFormManagerService } from '@initial/services/initial-form.manager.service';
 
 @Component({
-  selector: 'app-initial',
-  templateUrl: './initial.component.html',
-  styleUrls: ['./initial.component.scss']
+    selector: 'app-initial',
+    templateUrl: './initial.component.html',
+    styleUrls: ['./initial.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InitialComponent implements OnInit {
+export class InitialComponent {
+    constructor(private initialFormManagerService: InitialFormManagerService) {}
 
-  constructor() { }
+    public getForm(): FormGroup {
+        return this.initialFormManagerService.getFormInstance();
+    }
 
-  ngOnInit(): void {
-  }
-
+    public isFormValid(): boolean {
+        return this.initialFormManagerService.isFormValid();
+    }
 }
