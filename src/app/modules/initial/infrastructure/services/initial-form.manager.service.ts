@@ -55,7 +55,7 @@ export class InitialFormManagerService implements OnDestroy {
         control.setValue(visitorMode);
     }
 
-    toggleNameControlAvailability(visitorMode: boolean): void {
+    public toggleNameControlAvailability(visitorMode: boolean): void {
         const control: AbstractControl | null = this.getFormInstance().get('name');
 
         if (control === null) {
@@ -63,6 +63,16 @@ export class InitialFormManagerService implements OnDestroy {
         }
 
         visitorMode ? control.disable() : control.enable();
+    }
+
+    public getName(): string {
+        const control: AbstractControl | null = this.getFormInstance().get('name');
+
+        if (control === null) {
+            return '';
+        }
+
+        return control.value;
     }
 
     private handleVisitorModeValueChanges(): void {

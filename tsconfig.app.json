@@ -17,5 +17,6 @@
     "@weather/*": ["src/app/modules/weather/*"],
     "@details/*": ["src/app/modules/details/*"],
     "@shared/*": ["src/app/modules/shared/*"],
+    "@user/*": ["src/app/modules/user/*"],
   }
 }
