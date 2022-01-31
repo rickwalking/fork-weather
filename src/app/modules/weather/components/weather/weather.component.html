@@ -1,0 +1,6 @@
+<div>
+    <app-details *ngIf="hasForecast$ | async; else noForecast" [forecast]="forecast$ | async"></app-details>
+    <ng-template #noForecast>
+        <app-no-forecast [user]="user$ | async"></app-no-forecast>
+    </ng-template>
+</div>

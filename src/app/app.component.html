@@ -1,4 +1,4 @@
 <ng-container *ngIf="hasUser$ | async">
-    <app-header></app-header>
+    <app-header (action)="logout()"></app-header>
 </ng-container>
 <router-outlet></router-outlet>

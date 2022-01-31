@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@initial/infrastructure/guards/auth.guard';
 import { InitialComponent } from '@initial/components/initial/initial.component';
 import { WeatherModule } from '@weather/weather.module';
+import { InitialGuard } from '@initial/infrastructure/guards/initial.guard';
 
 const routes: Routes = [
     {
         path: '',
         component: InitialComponent,
         pathMatch: 'full',
-        canActivate: [],
+        canActivate: [InitialGuard],
     },
     {
         path: 'weather',

@@ -35,6 +35,10 @@ export class InitialFormManagerService implements OnDestroy {
         return this.initialForm.valid;
     }
 
+    public resetForm(): void {
+        this.getFormInstance().reset();
+    }
+
     public setName(name: string): void {
         const control: AbstractControl | null = this.getFormInstance().get('name');
 

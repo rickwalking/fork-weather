@@ -1,12 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUser } from '@user/domain/interfaces/user.interface';
-import { addUser } from '@user/infrastructure/state/actions/actions';
+import { IUserEntity } from '@user/domain/interfaces/user-entity.interface';
+import { addUser, removeUser } from '@user/infrastructure/state/actions/actions';
 
-export const initialState: Partial<IUser> = {};
+export const initialState: Partial<IUserEntity> = {};
 
 export const userReducer = createReducer(
     initialState,
-    on(addUser, (state, { user }) => {
-        return { ...state, user };
+    on(addUser, (state, { user: { id, name } }) => {
+        return {
+            ...state,
+            user: {
+                id: id,
+                name: name,
+            },
+        };
+    }),
+    on(removeUser, () => {
+        return {};
     }),
 );

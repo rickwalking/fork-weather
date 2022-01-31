@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IUser } from '@user/domain/interfaces/user.interface';
 import { IShowUserDTO } from '@user/dto/show-user.interface';
-import { addUser } from '@user/infrastructure/state/actions/actions';
-import { selectHasUser, selectUser } from '@user/infrastructure/state/selectors/selectors';
-import { map, Observable, share } from 'rxjs';
+import { addUser, removeUser } from '@user/infrastructure/state/actions/actions';
+import { selectCurrentUser, selectHasUser } from '@user/infrastructure/state/selectors/selectors';
+import { Observable, share } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -14,7 +14,7 @@ export class UserFacade {
     private hasUser$: Observable<boolean>;
 
     constructor(private store: Store) {
-        this.user$ = this.store.pipe(select(selectUser));
+        this.user$ = this.store.pipe(select(selectCurrentUser));
         this.hasUser$ = this.store.pipe(select(selectHasUser));
     }
 
@@ -26,13 +26,12 @@ export class UserFacade {
         );
     }
 
+    public removeUser(): void {
+        this.store.dispatch(removeUser());
+    }
+
     public get currentUser$(): Observable<IShowUserDTO> {
-        return this.user$.pipe(
-            map((user: IUser): IShowUserDTO => {
-                return Object.freeze({ ...user });
-            }),
-            share(),
-        );
+        return this.user$.pipe(share());
     }
 
     public get hasUserPersisted$(): Observable<boolean> {

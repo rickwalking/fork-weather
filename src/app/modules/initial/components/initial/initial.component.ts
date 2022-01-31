@@ -27,6 +27,7 @@ export class InitialComponent {
 
     public handleSubmit(): void {
         this.createUserService.createUser();
-        this.router.navigate(['/weather']);
+        this.initialFormManagerService.resetForm();
+        this.router.navigate(['/weather'], { replaceUrl: true });
     }
 }

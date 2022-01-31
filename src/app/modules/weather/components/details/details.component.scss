@@ -1,0 +1,38 @@
+.details {
+    width: 80%;
+    margin: 40px auto 0 auto;
+
+    &__header {
+        display: flex;
+        justify-content: center;
+    }
+
+    &--subtitle {
+        text-align: center;
+    }
+
+    &__card-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__forecast-info {
+        background-color: #673ab7;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 4px;
+        padding: 10px;
+        width: 60%;
+    }
+
+    &--info {
+        padding: 10px 0;
+    }
+
+    &--temperature-text {
+        font-size: 25px;
+    }
+}

@@ -1,0 +1,15 @@
+<div class="details">
+    <mat-card>
+        <mat-card-header class="details__header">
+            <mat-card-title>{{ forecast | showForecastCity }}</mat-card-title>
+            <mat-card-subtitle class="details--subtitle">{{ getDate() | date: 'dd/MM/yyyy' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="details__card-content">
+            <div class="details__forecast-info">
+                <span class="details--temperature-text details--info"> {{ forecast | showForecastTemperature }}</span>
+                <span class="details--info">Sensação térmica de:</span>
+                <span class="details--info">{{ forecast | showForecastFeelsLike }}</span>
+            </div>
+        </mat-card-content>
+      </mat-card>
+</div>
